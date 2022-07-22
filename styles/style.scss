@@ -7,9 +7,10 @@
 }
 
 /* to switch between dark and light mode*/
+/* these are variables that we can use along our code - so we just need to call the name of the respective variable that we need and we don need to write the color every time we are going to use */
 :root{
     --color-primary: #191d2b;
-    --color-secundary: #ac2525;
+    --color-secondary: #27AE60;
     --color-white: #FFFFFF;
     --color-black: #000;
     --color-grey0: #f8f8f8;
@@ -24,6 +25,7 @@
 }
 
 body{
+    background-color: var(--color-primary);
     font-family: 'Poppins', sans-serif;
     font-size: 1.1rem;
     color: var(--color-white);
@@ -72,18 +74,65 @@ section{
 /* we will call every class of each section */
 /* when this section is active, this will pass to the default section (line 62) */
 /* this will provoke the animation, like the section will appear from  */
-.sec1,.sec2,.sec3, .sec4, .sec5{
+.sec1 {
     /* i don´t want to show the sections because i will swap between them */
     display: none;
     transform: translateY(0) scale(1);
-}
+  }
+  
+  .sec2 {
+    display: none;
+    transform: translateY(0) scale(1);
+  }
+  
+  .sec3 {
+    display: none;
+    transform: translateY(0) scale(1);
+  }
+  
+  .sec4 {
+    display: none;
+    transform: translateY(0) scale(1);
+  }
+  
+  .sec5 {
+    display: none;
+    transform: translateY(0) scale(1);
+  }
+  
+  /* the sections are in there but they don appear in the screen - we need to: */
+  /* we only want to display the section that is active */
+  .active {
+    display: block;
+    -webkit-animation: scaleAnim 1s ease-in-out;
+            animation: scaleAnim 1s ease-in-out;
+    /* scaleAnim is a animation that we create to a transition to another section*/
+  }
+  @-webkit-keyframes scaleAnim {
+    0% {
+      transform: translateY(-100%) scaleY(0);
+    }
+    100% {
+      transform: translateY(0) scaleY(1);
+    }
+  }
+  @keyframes scaleAnim {
+    0% {
+      transform: translateY(-100%) scaleY(0);
+    }
+    100% {
+      transform: translateY(0) scaleY(1);
+    }
+  }
+
+
 
 /* these controlls needs to stay at the right side of our page and their position will be fixed */
-.controlls{
+.controls{
     position: fixed;
-    right: 3%;
+    z-index: 10;
     top: 50%;
-    z-index: 1;
+    right: 3%;
     /* these controlls will be displayed in the form of a column */
     display: flex;
     flex-direction: column;
@@ -94,5 +143,60 @@ section{
     /* each control will have a padding that gonna give a space between them */
     .control{
         padding: 1rem;
+        cursor: pointer;
+        background-color: var(--color-grey4); /* these color comes from line 19 */
+        /* these icons will be cover be a background grey circle */ 
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        /* we need to give a space between wich circle, so we are going to use flex to give a space */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: .7rem 0; /* top and bottom - 7; left and right - 0*/
+        box-shadow: var(--box-shadow-1); /* this is the box-shadow that we have in line 24 */
+        /* to manipulate the icon size - inside the control */
+        i{
+            font-size: 1.2rem;
+            color: var(--color-grey2);
+            /* when i click i don need to do anything*/
+            pointer-events: none;
+        }
+    }
+    /* everytime i click on a button, these conditions will be applied - the button that is activated at the moment - when i go to a section, the respective btton of the section will be activated */
+    .active-btn{
+        background-color: var(--color-secondary);
+        transition: all .4s ease-in-out;
+        i{
+            color: var(--color-white);
+        }
     }
 }
+
+/* Header content */
+.header-content{
+    display: grid;
+    /* this will display 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+    .left-header{
+        display: flex;
+        align-items: center;
+        position: relative;
+        /* behind the photo we have a green rectangle*/
+        .h-shape{
+            transition: all .4s ease-in-out;
+            width: 65%;
+            height: 100%;
+            background-color: var(--color-secondary);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            /* clip-path is used to cut the rectangle in half */
+            clip-path: polygon(0 0, 46% 0, 79% 100%, 0% 100%);
+        }
+    }
+}
+
+/* Independent components - some of them we will reuse */
