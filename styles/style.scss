@@ -1,202 +1,377 @@
 /* styles that will affect the whole page */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
 }
 
 /* to switch between dark and light mode*/
 /* these are variables that we can use along our code - so we just need to call the name of the respective variable that we need and we don need to write the color every time we are going to use */
-:root{
-    --color-primary: #191d2b;
-    --color-secondary: #27AE60;
-    --color-white: #FFFFFF;
-    --color-black: #000;
-    --color-grey0: #f8f8f8;
-    --color-grey1: #dbe1e8;
-    --color-grey2: #b2becd;
-    --color-grey3: #6c7983;
-    --color-grey4: #454e56;
-    --color-grey5: #2a2e35;
-    --color-grey6: #12181b;
-    --br-sm-2: 14px;
-    --box-shadow-1: 0 3px 15px rgba(0,0,0,.3);
+:root {
+  --color-primary: #191d2b;
+  --color-secondary: #27ae60;
+  --color-white: #ffffff;
+  --color-black: #000;
+  --color-grey0: #f8f8f8;
+  --color-grey1: #dbe1e8;
+  --color-grey2: #b2becd;
+  --color-grey3: #6c7983;
+  --color-grey4: #454e56;
+  --color-grey5: #2a2e35;
+  --color-grey6: #12181b;
+  --br-sm-2: 14px;
+  --box-shadow-1: 0 3px 15px rgba(0, 0, 0, 0.3);
 }
 
-body{
-    background-color: var(--color-primary);
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1rem;
-    color: var(--color-white);
-    transition: all .4s ease-in-out;
+body {
+  background-color: var(--color-primary);
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  color: var(--color-white);
+  transition: all 0.4s ease-in-out;
 }
 
-a{
-    display: inline-block;
-    /* to eliminate unwanted things like the stroke under the links */
-    text-decoration: none;
-    /* this will inherite the color and the font-family of the body*/
-    color: inherit;
-    font-family: inherit;
+a {
+  display: inline-block;
+  /* to eliminate unwanted things like the stroke under the links */
+  text-decoration: none;
+  /* this will inherite the color and the font-family of the body*/
+  color: inherit;
+  font-family: inherit;
 }
 
-header{
-    /* the height of the header is gonna be fixed */
-    height: 100vh;
-    color: var(--color-white);
-    /* just in case something overflows (appear on top) */
-    overflow: hidden;
-    padding: 0;
+header {
+  /* the height of the header is gonna be fixed */
+  height: 100vh;
+  color: var(--color-white);
+  /* just in case something overflows (appear on top) */
+  overflow: hidden;
+  padding: 0;
 }
-/* which section will have a height*/ 
-section{
-    min-width: 100vh;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    /* the pacing between top and bottom will gonna be 3rem and left to right 18rem */ 
-    padding: 3rem 18rem;
+/* which section will have a height*/
+section {
+  min-width: 100vh;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* the pacing between top and bottom will gonna be 3rem and left to right 18rem */
+  padding: 3rem 18rem;
 }
 
 /* the main problem of these sections is that without js we will se all sections on top of each other because they have position absolute. We need to show only the selected section and hidden the others */
-
-
-.section{
-    /* by default i want the section to be off the screen */
-    transform: translateY(-100%) scale(0);
-    transition: all .4s ease-in-out;
-    background-color: var(--color-primary);
+.container {
+  display: none;
+  transform: translateY(-100%) scale(0);
+  transition: all .4s ease-in-out;
+  background-color: var(--color-primary);
 }
 
-/* for each section i can assign different properties like a specific color*/
-/* we will call every class of each section */
-/* when this section is active, this will pass to the default section (line 62) */
-/* this will provoke the animation, like the section will appear from  */
-.sec1 {
-    /* i don´t want to show the sections because i will swap between them */
-    display: none;
-    transform: translateY(0) scale(1);
-  }
-  
-  .sec2 {
-    display: none;
-    transform: translateY(0) scale(1);
-  }
-  
-  .sec3 {
-    display: none;
-    transform: translateY(0) scale(1);
-  }
-  
-  .sec4 {
-    display: none;
-    transform: translateY(0) scale(1);
-  }
-  
-  .sec5 {
-    display: none;
-    transform: translateY(0) scale(1);
-  }
-  
-  /* the sections are in there but they don appear in the screen - we need to: */
-  /* we only want to display the section that is active */
-  .active {
-    display: block;
-    -webkit-animation: scaleAnim 1s ease-in-out;
-            animation: scaleAnim 1s ease-in-out;
-    /* scaleAnim is a animation that we create to a transition to another section*/
-  }
-  @-webkit-keyframes scaleAnim {
-    0% {
-      transform: translateY(-100%) scaleY(0);
-    }
-    100% {
-      transform: translateY(0) scaleY(1);
-    }
-  }
-  @keyframes scaleAnim {
-    0% {
-      transform: translateY(-100%) scaleY(0);
-    }
-    100% {
-      transform: translateY(0) scaleY(1);
-    }
-  }
+// .section {
+//   /* by default i want the section to be off the screen */
+//   transform: translateY(-100%) scale(0);
+//   transition: all 0.4s ease-in-out;
+//   background-color: var(--color-primary);
+// }
 
+// /* for each section i can assign different properties like a specific color*/
+// /* we will call every class of each section */
+// /* when this section is active, this will pass to the default section (line 62) */
+// /* this will provoke the animation, like the section will appear from  */
+// .sec1 {
+//   /* i don´t want to show the sections because i will swap between them */
+//   display: none;
+//   transform: translateY(0) scale(1);
+// }
 
+// .sec2 {
+//   display: none;
+//   transform: translateY(0) scale(1);
+// }
+
+// .sec3 {
+//   display: none;
+//   transform: translateY(0) scale(1);
+// }
+
+// .sec4 {
+//   display: none;
+//   transform: translateY(0) scale(1);
+// }
+
+// .sec5 {
+//   display: none;
+//   transform: translateY(0) scale(1);
+// }
+
+.active {
+  display: block;
+  animation: appear 1s ease-in-out;
+  transform: translateY(0) scaleY(1);
+  @keyframes appear {
+      0%{ transform: translateY(-100%) scaleY(0); }
+      100%{ transform: translateY(0) scaleY(1); }
+  }
+}
+
+// /* the sections are in there but they don appear in the screen - we need to: */
+// /* we only want to display the section that is active */
+// .active {
+//   display: block;
+//   -webkit-animation: scaleAnim 1s ease-in-out;
+//   animation: scaleAnim 1s ease-in-out;
+//   /* scaleAnim is a animation that we create to a transition to another section*/
+// }
+// @-webkit-keyframes scaleAnim {
+//   0% {
+//     transform: translateY(-100%) scaleY(0);
+//   }
+//   100% {
+//     transform: translateY(0) scaleY(1);
+//   }
+// }
+// @keyframes scaleAnim {
+//   0% {
+//     transform: translateY(-100%) scaleY(0);
+//   }
+//   100% {
+//     transform: translateY(0) scaleY(1);
+//   }
+// }
 
 /* these controlls needs to stay at the right side of our page and their position will be fixed */
-.controls{
-    position: fixed;
-    z-index: 10;
-    top: 50%;
-    right: 3%;
-    /* these controlls will be displayed in the form of a column */
+.controls {
+  position: fixed;
+  z-index: 10;
+  top: 50%;
+  right: 3%;
+  /* these controlls will be displayed in the form of a column */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  /* inside of the class controlls we will manipulate the class control */
+  /* each control will have a padding that gonna give a space between them */
+  .control {
+    padding: 1rem;
+    cursor: pointer;
+    background-color: var(--color-grey4); /* these color comes from line 19 */
+    /* these icons will be cover be a background grey circle */
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    /* we need to give a space between wich circle, so we are going to use flex to give a space */
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    transform: translateY(-50%);
-    /* inside of the class controlls we will manipulate the class control */
-    /* each control will have a padding that gonna give a space between them */
-    .control{
-        padding: 1rem;
-        cursor: pointer;
-        background-color: var(--color-grey4); /* these color comes from line 19 */
-        /* these icons will be cover be a background grey circle */ 
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
-        /* we need to give a space between wich circle, so we are going to use flex to give a space */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: .7rem 0; /* top and bottom - 7; left and right - 0*/
-        box-shadow: var(--box-shadow-1); /* this is the box-shadow that we have in line 24 */
-        /* to manipulate the icon size - inside the control */
-        i{
-            font-size: 1.2rem;
-            color: var(--color-grey2);
-            /* when i click i don need to do anything*/
-            pointer-events: none;
-        }
+    align-items: center;
+    margin: 0.7rem 0; /* top and bottom - 7; left and right - 0*/
+    box-shadow: var(
+      --box-shadow-1
+    ); /* this is the box-shadow that we have in line 24 */
+    /* to manipulate the icon size - inside the control */
+    i {
+      font-size: 1.2rem;
+      color: var(--color-grey2);
+      /* when i click i don need to do anything*/
+      pointer-events: none;
     }
-    /* everytime i click on a button, these conditions will be applied - the button that is activated at the moment - when i go to a section, the respective btton of the section will be activated */
-    .active-btn{
-        background-color: var(--color-secondary);
-        transition: all .4s ease-in-out;
-        i{
-            color: var(--color-white);
-        }
+  }
+  /* everytime i click on a button, these conditions will be applied - the button that is activated at the moment - when i go to a section, the respective btton of the section will be activated */
+  .active-btn {
+    background-color: var(--color-secondary);
+    transition: all 0.4s ease-in-out;
+    i {
+      color: var(--color-white);
     }
+  }
 }
 
 /* Header content */
-.header-content{
-    display: grid;
-    /* this will display 2 columns */
-    grid-template-columns: repeat(2, 1fr);
-    height: 100%;
-    .left-header{
-        display: flex;
-        align-items: center;
-        position: relative;
-        /* behind the photo we have a green rectangle*/
-        .h-shape{
-            transition: all .4s ease-in-out;
-            width: 65%;
-            height: 100%;
-            background-color: var(--color-secondary);
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: -1;
-            /* clip-path is used to cut the rectangle in half */
-            clip-path: polygon(0 0, 46% 0, 79% 100%, 0% 100%);
-        }
+.header-content {
+  display: grid;
+  /* this will display 2 columns */
+  grid-template-columns: repeat(2, 1fr);
+  min-height: 100vh;
+  .left-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    /* behind the photo we have a green rectangle*/
+    .h-shape {
+      transition: all 0.4s ease-in-out;
+      width: 65%;
+      height: 100%;
+      background-color: var(--color-secondary);
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      /* clip-path is used to cut the rectangle in half */
+      clip-path: polygon(0 0, 46% 0, 79% 100%, 0% 100%);
     }
+    .image {
+      border-radius: var(--br-sm-2);
+      height: 90%;
+      width: 68%;
+      margin-left: 4rem;
+      background-color: var(--color-black);
+      transition: all 0.4s ease-in-out;
+      /* behind the image we are going to put a black rectangle*/
+      img {
+        width: 100%;
+        height: 100%;
+        /* with this the image will take up all the space in the rectangle */
+        object-fit: cover;
+        transition: all 0.4s ease-in-out;
+        /* this is to put the image in black and white */
+        // filter: grayscale(100%);
+        // &:hover {
+        //   filter: grayscale(0);
+        // }
+      }
+    }
+  }
+
+  .right-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 18rem;
+    .name{
+      font-size: 3rem;
+      span{
+        color: var(--color-secondary)
+      }
+    }
+    p{
+      margin: 1.5rem 0;
+      line-height: 2rem;
+    }
+  }
 }
 
+@keyframes waving-hand{
+  0%{
+    transform: rotate(0deg);
+  }
+  10%{
+    transform: rotate(14deg);
+  }
+  20%{
+    transform: rotate(-8deg);
+  }
+  30%{
+    transform: rotate(14deg);
+  }
+  40%{
+    transform: rotate(-4.0deg);
+  }
+  50%{
+    transform: rotate(10deg);
+  }
+  60%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+}
+
+.emoji {
+  animation-name: wave-animation;  /* Refers to the name of your @keyframes element above */
+  animation-duration: 2.5s;        /* Change to speed up or slow down */
+  animation-iteration-count: infinite;  /* Never stop waving :) */
+  transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+
+
+/* About section */ 
+
+
+
+
+
+
+
 /* Independent components - some of them we will reuse */
+
+/* this is for the download cv button */
+
+/* with this we will reduce the border around the text and the icon */
+.btn-con{
+  display: flex;
+  align-self: start;
+}
+.main-btn{
+  border-radius: 30px;
+  color: inherit;
+  font-weight: 600;
+  position: relative;
+  border: 1px solid var(--color-secundary);
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  overflow: hidden;
+  background-color: #27ae60;
+  .btn-text{
+    padding: 0 2rem;
+  }
+  .btn-icon{
+    background-color: var(--color-secundary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* the circle around the icon and is going to be green */ 
+    border-radius: 50%;
+    padding: 1rem;
+  }
+  &::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    transition: all .4s ease-out;
+    z-index: -1;
+  }
+  /* to give a color when we put the mouse above the button */
+  &:hover{
+    transition: all .4s ease-out;
+    &::before{
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-secondary);
+      /* we need to bring back to the default position */
+      transform: translateX(0);
+      transition: all .4s ease-out;
+    }    
+  }
+}
+
+.main-tittle{
+  text-align: center;
+  h2{
+    position: relative;
+    text-transform: uppercase;
+    font-size: 4rem;
+    font-weight: 700;
+    span{
+      color: var(--color-secondary);
+    }
+    /* behind the main text we are going to have a shadow text*/
+    .bg-text{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      color: var(--color-grey5);
+      transition: all .4s ease-out;
+      z-index: -1;
+      transform: translate(-50%, -50%);
+      font-weight: 800;
+      font-size: 6.3rem;
+    }
+  }
+}
