@@ -264,6 +264,123 @@ section {
 }
 
 /* About section */
+.about-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-top: 3.5rem;
+  padding-bottom: 5rem;
+  /* where we will have rectangules that contains information */
+}
+.about-container .right-about {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+}
+.about-container .right-about .about-item {
+  border: 1px solid var(--color-grey5);
+  border-radius: 5px;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+  /* when we put the mouse above these rectangles, these are the functions that will be applied */
+}
+.about-container .right-about .about-item:hover {
+  cursor: default;
+  transform: translateY(-5px);
+  border: 1px solid var(--color-secondary);
+  box-shadow: 1px 4px 15px rgba(0, 0, 0, 0.32);
+}
+.about-container .right-about .about-item .abt-text {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.about-container .right-about .about-item .abt-text .large-text {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+.about-container .right-about .about-item .abt-text .small-text {
+  padding-left: 3rem;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  color: var(--color-grey1);
+  letter-spacing: 2px;
+}
+.about-container .right-about .about-item .abt-text .small-text::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15px;
+  width: 2rem;
+  height: 2px;
+  background-color: var(--color-grey5);
+}
+.about-container .left-about {
+  padding-right: 5rem;
+}
+.about-container .left-about p {
+  line-height: 2rem;
+  padding: 1rem;
+  color: var(--color-grey1);
+}
+.about-container .left-about h2 {
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.stat-tittle {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 3.5 rem 0;
+  position: relative;
+  margin-bottom: 2%;
+}
+.stat-tittle::before {
+  content: "";
+  left: 0;
+  top: 0;
+  width: 40%;
+  height: 1px;
+  background-color: var(--color-grey5);
+  transform: translateX(-50%);
+}
+
+.experience-container {
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+  /* we are going to have 2 columns and these columns separated by */
+  gap: 2rem;
+}
+
+.experience-container > div {
+  background: #365644;
+  padding: 2.4 rem 5rem;
+  border-radius: 2rem;
+  border: 1px solid transparent;
+}
+
+.experience_container > div:hover {
+  background: transparent;
+  border-color: #27ae60;
+  cursor: default;
+}
+
+.experience-container > div h3 {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: var(--color-secondary);
+}
+
+.experience_content {
+  margin-left: 3rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 /* Independent components - some of them we will reuse */
 /* this is for the download cv button */
 /* with this we will reduce the border around the text and the icon */
