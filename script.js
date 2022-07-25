@@ -35,6 +35,10 @@ function PageTransitions(){
             document.getElementById(button.dataset.id).classList.add("active"); 
         })
     });
+    // these will switch between the light mode and the dark mode
+    document.querySelector(".theme-btn").addEventListener("click", () => {
+        document.body.classList.toggle("light-mode");
+    })
 }
 
 PageTransitions();
